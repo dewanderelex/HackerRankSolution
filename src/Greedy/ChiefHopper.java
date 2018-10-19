@@ -1,0 +1,56 @@
+package Greedy;
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class ChiefHopper {
+    // Complete the chiefHopper function below.
+    static int chiefHopper(int[] arr) {
+        int min = 0;
+        for (int i = arr.length - 1; i >= 0; i--){
+            if(arr[i] > min) {
+                min += (int) Math.ceil((arr[i] - min) / 2.0);
+            } else if(arr[i] < min) {
+                min = (int) Math.ceil((arr[i] + min) / 2.0);
+            }
+        }
+        return min;
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+
+//        int [] arr = {2,3,4,5,6};
+//        int s = chiefHopper(arr);
+
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        int[] arr = new int[n];
+
+        String[] arrItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < n; i++) {
+            int arrItem = Integer.parseInt(arrItems[i]);
+            arr[i] = arrItem;
+        }
+
+        int result = chiefHopper(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
