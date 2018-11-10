@@ -1,4 +1,4 @@
-package Greedy;
+package ProblemSolving.Greedy;
 
 import java.io.*;
 import java.math.*;
