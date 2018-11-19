@@ -48,6 +48,7 @@ public class TheCoinChangeProblem {
                 table[j] += table[j - i];
             }
         }
+
         return table[n];
     }
 
